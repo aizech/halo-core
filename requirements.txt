@@ -16,7 +16,7 @@ orjson>=3.9.0
 
 # Web/API
 requests>=2.28.0
-PyJWT>=2.8.0
+PyJWT>=2.12.1
 tornado>=6.2.0
 uvicorn>=0.20.0
 aiofiles>=22.1.0
