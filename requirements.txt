@@ -38,7 +38,7 @@ xlrd>=2.0.1
 pillow>=9.5.0
 
 # Media processing
-faster-whisper>=0.9.0
+faster-whisper>=1.2.1
 moviepy>=1.0.3
 
 # External sources
