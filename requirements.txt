@@ -20,7 +20,7 @@ PyJWT>=2.12.1
 tornado>=6.2.0
 uvicorn>=0.20.0
 aiofiles>=22.1.0
-python-multipart>=0.0.22
+python-multipart>=0.0.29
 
 # Database
 sqlalchemy>=2.0.0
