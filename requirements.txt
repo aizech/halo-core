@@ -1,5 +1,5 @@
 # Core application
-streamlit>=1.40.0,<2
+streamlit>=1.57.0,<2
 agno>=2.5.0,<3
 python-dotenv>=1.0.1
 
