@@ -35,7 +35,7 @@ openpyxl>=3.0.10
 xlrd>=2.0.2
 openpyxl>=3.1.5
 xlrd>=2.0.1
-pillow>=9.5.0
+pillow>=12.2.0
 
 # Media processing
 faster-whisper>=1.2.1
