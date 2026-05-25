@@ -57,7 +57,7 @@ protobuf>=3.20.0
 
 # Medical/Imaging
 pydicom>=2.4.0
-fpdf2>=2.7.0
+fpdf2>=2.8.7
 
 # Monitoring/Analytics
 langfuse>=3.0.0
