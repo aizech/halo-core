@@ -39,7 +39,7 @@ pillow>=12.2.0
 
 # Media processing
 faster-whisper>=1.2.1
-moviepy>=1.0.3
+moviepy>=2.2.1
 
 # External sources
 wikipedia>=1.4.0
