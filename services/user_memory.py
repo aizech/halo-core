@@ -45,8 +45,7 @@ def ensure_memory_schema_if_needed() -> None:
     connection = getattr(db, "connection", None)
     if connection is None:
         return
-    connection.execute(
-        """
+    connection.execute("""
         CREATE TABLE IF NOT EXISTS agno_memories (
             memory_id VARCHAR NOT NULL PRIMARY KEY,
             memory JSON NOT NULL,
@@ -59,8 +58,7 @@ def ensure_memory_schema_if_needed() -> None:
             created_at BIGINT NOT NULL,
             updated_at BIGINT
         )
-        """
-    )
+        """)
     connection.commit()
 
 

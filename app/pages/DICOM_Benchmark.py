@@ -556,8 +556,7 @@ with export_col2:
 
 # ── Explanation panel ─────────────────────────────────────────────────────────
 with st.expander("💡 What makes the optimized version faster?", expanded=False):
-    st.markdown(
-        """
+    st.markdown("""
 | Technique | What it does | Typical gain |
 |---|---|---|
 | `stop_before_pixels=True` | Skips decoding pixel arrays (often 10–200 MB per file) | **10–50×** per file |
@@ -576,5 +575,4 @@ Use ≥ 8 files to see the parallel gain.
 
 - Naive: ~30–60 minutes (sequential, full pixel decode)
 - Optimized (8 workers, warm cache): **< 2 minutes** — often under 30 seconds
-        """
-    )
+        """)

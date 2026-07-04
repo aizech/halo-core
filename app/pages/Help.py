@@ -28,8 +28,7 @@ streamlit run app/main.py""",
             language="bash",
         )
 
-    st.markdown(
-        """
+    st.markdown("""
 
 ## Welcome to HALO Core
 
@@ -226,8 +225,7 @@ HALO includes fallback behavior to preserve response continuity where possible.
 ---
 
 Made with :material/favorite: by Corpus Analytica
-        """
-    )
+        """)
 
 
 if __name__ == "__main__":
