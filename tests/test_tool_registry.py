@@ -34,9 +34,9 @@ class TestToolRegistry:
         required_fields = {"display_name", "description", "category"}
         for tool_id, meta in TOOL_METADATA.items():
             for field in required_fields:
-                assert hasattr(
-                    meta, field
-                ), f"Missing '{field}' in metadata for {tool_id}"
+                assert hasattr(meta, field), (
+                    f"Missing '{field}' in metadata for {tool_id}"
+                )
 
     def test_register_tool_adds_builder(self):
         """register_tool should add a builder function."""

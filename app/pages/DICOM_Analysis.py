@@ -718,7 +718,7 @@ def _create_agent_runner():
 **Bildinformationen:**
 - Modalität: {modality}
 - Auflösung: {rows}x{cols} Pixel
-- Datei: {metadata.get('file_path', 'Unknown')}
+- Datei: {metadata.get("file_path", "Unknown")}
 
 **Analyseanforderungen:**
 1. Identifiziere alle Anomalien oder Auffälligkeiten
@@ -826,14 +826,14 @@ def _render_analysis_results(result: SeriesAnalysisResult):
         with col1:
             if result.study_info:
                 st.markdown(f"""
-                - **Studie:** {result.study_info.get('study_description', 'N/A')}
-                - **Modalität:** {result.study_info.get('modality', 'N/A')}
+                - **Studie:** {result.study_info.get("study_description", "N/A")}
+                - **Modalität:** {result.study_info.get("modality", "N/A")}
                 """)
         with col2:
             if result.series_info:
                 st.markdown(f"""
-                - **Serie:** {result.series_info.get('series_description', 'N/A')}
-                - **Serien-Nr.:** {result.series_info.get('series_number', 'N/A')}
+                - **Serie:** {result.series_info.get("series_description", "N/A")}
+                - **Serien-Nr.:** {result.series_info.get("series_number", "N/A")}
                 """)
 
     # Per-DICOM results

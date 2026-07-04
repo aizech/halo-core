@@ -231,7 +231,7 @@ def _render_mcp_servers_ui(
             if is_admin:
                 servers_to_edit.append(
                     {
-                        "name": f"new-mcp-server-{len(servers_to_edit)+1}",
+                        "name": f"new-mcp-server-{len(servers_to_edit) + 1}",
                         "enabled": False,
                         "url": "https://...",
                         "transport": "streamable-http",

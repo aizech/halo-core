@@ -49,12 +49,12 @@ def generate_prompt(content_type: str, topic: str, audience: str = "general") ->
 
     template = CONTENT_TYPES[content_type]
 
-    prompt = f"""Create a {template['length']} {content_type.replace('_', ' ')} about {topic}.
+    prompt = f"""Create a {template["length"]} {content_type.replace("_", " ")} about {topic}.
 Target audience: {audience}
-Tone: {template['tone']}
+Tone: {template["tone"]}
 
 Structure:
-{chr(10).join(f"- {s}" for s in template['structure'])}
+{chr(10).join(f"- {s}" for s in template["structure"])}
 
 Requirements:
 - Engaging hook/opening

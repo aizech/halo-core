@@ -501,7 +501,7 @@ def generate_synthetic_dicoms(n: int = 20, target_dir: str | None = None) -> lis
         import numpy as np
     except ImportError as exc:
         raise RuntimeError(
-            "pydicom (and numpy) are required. " "Run: pip install pydicom numpy"
+            "pydicom (and numpy) are required. Run: pip install pydicom numpy"
         ) from exc
 
     out_dir = (

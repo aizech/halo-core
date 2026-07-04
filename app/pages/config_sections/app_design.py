@@ -239,7 +239,9 @@ def render_menu_editor(
                         "Seite",
                         options=page_options,
                         index=page_options.index(default_page),
-                        format_func=lambda page: f"{page_labels.get(page, page)} ({page})",
+                        format_func=lambda page: (
+                            f"{page_labels.get(page, page)} ({page})"
+                        ),
                         key=f"menu_item_page_{row_id}",
                     )
                 else:

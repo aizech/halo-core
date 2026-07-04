@@ -81,9 +81,9 @@ class TestSkillRefsValidation:
             config = agent_configs.get(agent_id)
             if config:
                 skill_refs = config.get("skill_refs", [])
-                assert (
-                    len(skill_refs) > 0
-                ), f"Medical agent '{agent_id}' should have skill_refs"
+                assert len(skill_refs) > 0, (
+                    f"Medical agent '{agent_id}' should have skill_refs"
+                )
 
 
 class TestSkillMetadata:

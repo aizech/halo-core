@@ -261,7 +261,7 @@ if run_btn:
                 naive_failed += 1
             naive_records.append(rec)
             pct = (idx + 1) / len(dicom_paths)
-            naive_bar.progress(pct, text=f"Naive: {idx+1}/{len(dicom_paths)} files")
+            naive_bar.progress(pct, text=f"Naive: {idx + 1}/{len(dicom_paths)} files")
 
         naive_elapsed = round(time.perf_counter() - t0, 3)
         naive_bar.progress(1.0, text=f"✅ Naive done in {naive_elapsed}s")

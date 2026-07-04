@@ -113,7 +113,7 @@ def _render_settings_panel(
 
     details_box = container.container(border=True)
     details_box.markdown(
-        f"**{selected_title}**  \n" f"{selected_template.get('description', '')}"
+        f"**{selected_title}**  \n{selected_template.get('description', '')}"
     )
 
     settings_box = container.container(border=True)

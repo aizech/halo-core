@@ -445,21 +445,21 @@ def render_sidebar() -> None:
         @import url('https://fonts.googleapis.com/icon?family=Material+Icons+Sharp');
         :root {{
             /* Use Streamlit's native theme colors as fallbacks */
-            --sidebar-bg: {sidebar_bg_color or 'var(--secondaryBackgroundColor)'}; 
-            --sidebar-text: {sidebar_text_color or 'var(--textColor)'}; 
-            --sidebar-icon: {sidebar_icon_color or 'var(--textColor)'}; 
-            --sidebar-hover-bg: {menu_cfg['sidebar_hover_bg'] or 'var(--primaryColor)'}; 
-            --sidebar-hover-text: {menu_cfg.get('sidebar_hover_text_color', sidebar_text_color) or 'var(--textColor)'}; 
-            --sidebar-active-bg: {menu_cfg['sidebar_active_bg'] or 'var(--primaryColor)'}; 
-            --sidebar-focus-outline: {menu_cfg['sidebar_focus_outline'] or 'var(--primaryColor)'}; 
-            --sidebar-accent: {menu_cfg.get('sidebar_focus_outline', '#3B5998') or 'var(--primaryColor)'}; 
-            --sidebar-separator-color: {separator_color or 'rgba(0,0,0,0.1)'}; 
-            --sidebar-font-size: {menu_cfg['sidebar_font_size_px']}px; 
-            --sidebar-icon-size: {menu_cfg.get('sidebar_icon_size_px', 20)}px; 
-            --sidebar-collapsed-width: {menu_cfg['sidebar_collapsed_width_px']}px; 
-            --sidebar-hover-width: {menu_cfg['sidebar_hover_width_px']}px; 
-            --sidebar-item-gap: {menu_cfg.get('sidebar_item_gap_px', 4)}px; 
-            --sidebar-transition: {menu_cfg['sidebar_transition']}; 
+            --sidebar-bg: {sidebar_bg_color or "var(--secondaryBackgroundColor)"}; 
+            --sidebar-text: {sidebar_text_color or "var(--textColor)"}; 
+            --sidebar-icon: {sidebar_icon_color or "var(--textColor)"}; 
+            --sidebar-hover-bg: {menu_cfg["sidebar_hover_bg"] or "var(--primaryColor)"}; 
+            --sidebar-hover-text: {menu_cfg.get("sidebar_hover_text_color", sidebar_text_color) or "var(--textColor)"}; 
+            --sidebar-active-bg: {menu_cfg["sidebar_active_bg"] or "var(--primaryColor)"}; 
+            --sidebar-focus-outline: {menu_cfg["sidebar_focus_outline"] or "var(--primaryColor)"}; 
+            --sidebar-accent: {menu_cfg.get("sidebar_focus_outline", "#3B5998") or "var(--primaryColor)"}; 
+            --sidebar-separator-color: {separator_color or "rgba(0,0,0,0.1)"}; 
+            --sidebar-font-size: {menu_cfg["sidebar_font_size_px"]}px; 
+            --sidebar-icon-size: {menu_cfg.get("sidebar_icon_size_px", 20)}px; 
+            --sidebar-collapsed-width: {menu_cfg["sidebar_collapsed_width_px"]}px; 
+            --sidebar-hover-width: {menu_cfg["sidebar_hover_width_px"]}px; 
+            --sidebar-item-gap: {menu_cfg.get("sidebar_item_gap_px", 4)}px; 
+            --sidebar-transition: {menu_cfg["sidebar_transition"]}; 
         }}
             /* Apply sidebar background color */
             section[data-testid='stSidebar'] {{
@@ -1327,7 +1327,9 @@ def _render_app_design_configuration(
                         "Seite",
                         options=page_options,
                         index=page_options.index(default_page),
-                        format_func=lambda page: f"{page_labels.get(page, page)} ({page})",
+                        format_func=lambda page: (
+                            f"{page_labels.get(page, page)} ({page})"
+                        ),
                         key=f"menu_item_page_{row_id}",
                     )
                 else:
@@ -2681,7 +2683,6 @@ def render_sources_panel() -> None:
                 width="content",
                 key="bulk_delete_button",
             ):
-
                 st.session_state["confirm_bulk_delete"] = True
         if st.session_state.get("confirm_bulk_delete") and selected_ids:
             _open_bulk_delete_dialog(selected_ids)
@@ -2721,9 +2722,7 @@ def render_sources_panel() -> None:
                     elif st.session_state.get("confirm_rename_source_id") == src.id:
                         _open_rename_source_dialog(src.id, src.name)
                     source_download = (
-                        f"# {src.name}\n\n"
-                        f"Typ: {src.type_label}\n\n"
-                        f"Meta: {src.meta}\n"
+                        f"# {src.name}\n\nTyp: {src.type_label}\n\nMeta: {src.meta}\n"
                     )
                     st.download_button(
                         ":material/download: Herunterladen",

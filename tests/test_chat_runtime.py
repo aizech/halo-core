@@ -402,7 +402,7 @@ def test_run_chat_turn_trace_contains_structured_telemetry(monkeypatch):
 
 def test_apply_citation_policy_single_source_uses_one_citation_with_page():
     response = (
-        "Antwort mit mehrfachen Zitaten [Quelle].\n" "Noch ein Satz [Source: Some Doc]."
+        "Antwort mit mehrfachen Zitaten [Quelle].\nNoch ein Satz [Source: Some Doc]."
     )
     contexts = [{"meta": {"title": "source1", "page_number": "4"}}]
 
