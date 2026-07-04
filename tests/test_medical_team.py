@@ -134,9 +134,9 @@ class TestMedicalAgentConfigs:
             member_path = medical_agents.get(member_id)
             if member_path and member_path.exists():
                 member_data = json.loads(member_path.read_text(encoding="utf-8"))
-                assert member_data.get("type") == "agent", (
-                    f"Member {member_id} should be type 'agent'"
-                )
+                assert (
+                    member_data.get("type") == "agent"
+                ), f"Member {member_id} should be type 'agent'"
 
     def test_load_agent_configs_includes_medical(self):
         """load_agent_configs should include all medical agents."""
@@ -230,9 +230,9 @@ class TestMedicalStudioTemplates:
         ]
 
         for template in medical_templates:
-            assert template.get("team_id") == "medical_team", (
-                f"Template {template.get('id')} should bind to medical_team"
-            )
+            assert (
+                template.get("team_id") == "medical_team"
+            ), f"Template {template.get('id')} should bind to medical_team"
 
     def test_medical_templates_have_agent_binding(self, templates):
         """Medical templates should have agent_id binding."""
@@ -251,6 +251,6 @@ class TestMedicalStudioTemplates:
         for template_id, expected_agent in expected_bindings.items():
             template = template_map.get(template_id)
             assert template is not None, f"Missing template {template_id}"
-            assert template.get("agent_id") == expected_agent, (
-                f"Template {template_id} should bind to agent {expected_agent}"
-            )
+            assert (
+                template.get("agent_id") == expected_agent
+            ), f"Template {template_id} should bind to agent {expected_agent}"

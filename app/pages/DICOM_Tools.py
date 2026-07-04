@@ -26,18 +26,20 @@ def render():
 
     st.header("DICOM-Dateien anonymisieren")
 
-    st.markdown("""
+    st.markdown(
+        """
         ### Was wird anonymisiert?
-        
+
         Standardmäßig werden folgende HIPAA-Identifikatoren entfernt:
         - Patientendaten (Name, ID, Geburtsdatum, Geschlecht, Adresse)
         - Institutionsdaten (Name, Adresse)
         - Ärztedaten (Zuweisender Arzt, Durchführender Arzt)
         - Studien-/Serien-Metadaten (Study ID, Accession Number, Datum/Zeit)
         - DICOM UIDs (Study/Series/SOP Instance UIDs werden neu generiert)
-        
+
         Private Tags werden ebenfalls entfernt.
-        """)
+        """
+    )
 
     # Upload section
     st.subheader("Dateien hochladen")
@@ -342,23 +344,27 @@ def render():
     st.divider()
     st.header("Verzeichnis anonymisieren")
 
-    st.markdown("""
+    st.markdown(
+        """
         Für die Batch-Anonymisierung ganzer Verzeichnisse mit DICOM-Dateien
         kann die Kommandozeile verwendet werden:
-        
+
         ```bash
         python -m services.dicom_anonymizer /pfad/zum/input /pfad/zum/output
         ```
-        """)
+        """
+    )
 
     # Settings link
     st.divider()
-    st.markdown("""
-        **Einstellungen:** 
-        
-        Die automatische Anonymisierung beim Upload kann in der Configuration 
+    st.markdown(
+        """
+        **Einstellungen:**
+
+        Die automatische Anonymisierung beim Upload kann in der Configuration
         aktiviert werden. Setze `DICOM_ANONYMIZE_ON_UPLOAD=true` in der `.env` Datei.
-        """)
+        """
+    )
 
 
 if __name__ == "__main__":

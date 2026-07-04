@@ -19,20 +19,27 @@ Thanks for helping improve HALO Core. This project focuses on a NotebookLM-style
    ```
 
 2. **Create a virtual environment**
-   
+
 ```bash
    python -m venv .venv
    . .venv/Scripts/activate        # Windows Powershell: .venv\Scripts\Activate.ps1
    ```
-   
+
 3. **Install dependencies**
 
    ```bash
 pip install -r requirements.txt
    ```
-   
-4. **Configure secrets**
-   
+
+4. **Install pre-commit hooks**
+
+   ```bash
+pip install -r requirements-dev.txt
+pre-commit install
+   ```
+
+5. **Configure secrets**
+
 ```toml
    # .streamlit/secrets.toml
 OPENAI_API_KEY = "sk-..."
@@ -51,16 +58,19 @@ OPENAI_API_KEY = "sk-..."
    - Update documentation (PRD/ADR/README) when requirements change.
    - Add or update tests for new behavior.
 3. **Run checks**
-   
+
+   Pre-commit runs these automatically on every commit. You can also run them manually:
+
    ```bash
+pre-commit run --all-files
 pytest
    ruff check .
    black --check .
    mypy app services
    ```
-   
+
 4. **Run the app**
-   
+
 ```bash
    streamlit run app/main.py
 ```

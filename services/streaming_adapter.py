@@ -250,13 +250,7 @@ async def stream_agent_response_async(
             on_tools(current_tools)
 
     def _handle_chunk(chunk: object) -> None:
-        nonlocal \
-            response, \
-            authoritative_response, \
-            saw_content, \
-            saw_member_output, \
-            saw_team_output, \
-            final_response_emitted
+        nonlocal response, authoritative_response, saw_content, saw_member_output, saw_team_output, final_response_emitted
         if chunk is None:
             return
 
@@ -366,9 +360,7 @@ async def stream_agent_response_async(
                 "metrics": (
                     metrics
                     if isinstance(metrics, dict)
-                    else getattr(metrics, "__dict__", str(metrics))
-                    if metrics
-                    else None
+                    else getattr(metrics, "__dict__", str(metrics)) if metrics else None
                 ),
             }
             mcp_telemetry_events.append(event_data)

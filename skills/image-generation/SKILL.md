@@ -36,7 +36,7 @@ Use this skill when creating AI-generated images, writing image prompts, or help
 [Subject] + [Setting/Context] + [Style] + [Technical details]
 
 Example:
-"A modern office workspace with natural lighting, minimalist design, 
+"A modern office workspace with natural lighting, minimalist design,
 photorealistic, 4k, professional photography"
 ```
 

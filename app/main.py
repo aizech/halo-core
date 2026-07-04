@@ -445,21 +445,21 @@ def render_sidebar() -> None:
         @import url('https://fonts.googleapis.com/icon?family=Material+Icons+Sharp');
         :root {{
             /* Use Streamlit's native theme colors as fallbacks */
-            --sidebar-bg: {sidebar_bg_color or "var(--secondaryBackgroundColor)"}; 
-            --sidebar-text: {sidebar_text_color or "var(--textColor)"}; 
-            --sidebar-icon: {sidebar_icon_color or "var(--textColor)"}; 
-            --sidebar-hover-bg: {menu_cfg["sidebar_hover_bg"] or "var(--primaryColor)"}; 
-            --sidebar-hover-text: {menu_cfg.get("sidebar_hover_text_color", sidebar_text_color) or "var(--textColor)"}; 
-            --sidebar-active-bg: {menu_cfg["sidebar_active_bg"] or "var(--primaryColor)"}; 
-            --sidebar-focus-outline: {menu_cfg["sidebar_focus_outline"] or "var(--primaryColor)"}; 
-            --sidebar-accent: {menu_cfg.get("sidebar_focus_outline", "#3B5998") or "var(--primaryColor)"}; 
-            --sidebar-separator-color: {separator_color or "rgba(0,0,0,0.1)"}; 
-            --sidebar-font-size: {menu_cfg["sidebar_font_size_px"]}px; 
-            --sidebar-icon-size: {menu_cfg.get("sidebar_icon_size_px", 20)}px; 
-            --sidebar-collapsed-width: {menu_cfg["sidebar_collapsed_width_px"]}px; 
-            --sidebar-hover-width: {menu_cfg["sidebar_hover_width_px"]}px; 
-            --sidebar-item-gap: {menu_cfg.get("sidebar_item_gap_px", 4)}px; 
-            --sidebar-transition: {menu_cfg["sidebar_transition"]}; 
+            --sidebar-bg: {sidebar_bg_color or "var(--secondaryBackgroundColor)"};
+            --sidebar-text: {sidebar_text_color or "var(--textColor)"};
+            --sidebar-icon: {sidebar_icon_color or "var(--textColor)"};
+            --sidebar-hover-bg: {menu_cfg["sidebar_hover_bg"] or "var(--primaryColor)"};
+            --sidebar-hover-text: {menu_cfg.get("sidebar_hover_text_color", sidebar_text_color) or "var(--textColor)"};
+            --sidebar-active-bg: {menu_cfg["sidebar_active_bg"] or "var(--primaryColor)"};
+            --sidebar-focus-outline: {menu_cfg["sidebar_focus_outline"] or "var(--primaryColor)"};
+            --sidebar-accent: {menu_cfg.get("sidebar_focus_outline", "#3B5998") or "var(--primaryColor)"};
+            --sidebar-separator-color: {separator_color or "rgba(0,0,0,0.1)"};
+            --sidebar-font-size: {menu_cfg["sidebar_font_size_px"]}px;
+            --sidebar-icon-size: {menu_cfg.get("sidebar_icon_size_px", 20)}px;
+            --sidebar-collapsed-width: {menu_cfg["sidebar_collapsed_width_px"]}px;
+            --sidebar-hover-width: {menu_cfg["sidebar_hover_width_px"]}px;
+            --sidebar-item-gap: {menu_cfg.get("sidebar_item_gap_px", 4)}px;
+            --sidebar-transition: {menu_cfg["sidebar_transition"]};
         }}
             /* Apply sidebar background color */
             section[data-testid='stSidebar'] {{
@@ -558,7 +558,7 @@ def render_sidebar() -> None:
                 display: flex !important;
                 justify-content: center !important;
             }}
-            
+
             section[data-testid='stSidebar']:not(:hover) [data-testid='stPageLink'] a,
             section[data-testid='stSidebar']:not(:hover) .stButton button {{
                 display: flex !important;

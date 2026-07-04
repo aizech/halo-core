@@ -210,10 +210,12 @@ def _render_directory_tab(
 ) -> None:
     st.subheader("DICOM-Verzeichnis analysieren")
 
-    st.markdown("""
+    st.markdown(
+        """
         Wähle ein Verzeichnis mit DICOM-Dateien. Die Analyse wird automatisch
         alle DICOM-Dateien im Verzeichnis (inkl. Unterordner) erkennen und analysieren.
-        """)
+        """
+    )
 
     default_path = ""
     if "opt_dicom_dir_path" in st.session_state:
@@ -293,10 +295,12 @@ def _render_upload_tab(
 ) -> None:
     st.subheader("DICOM-Dateien hochladen")
 
-    st.markdown("""
+    st.markdown(
+        """
         Lade einzelne oder mehrere DICOM-Dateien hoch. Die Analyse wird
         jede Datei einzeln untersuchen und die Ergebnisse aggregieren.
-        """)
+        """
+    )
 
     uploaded_files = st.file_uploader(
         "DICOM-Dateien (.dcm, .dicom oder ohne Erweiterung)",
@@ -825,16 +829,20 @@ def _render_analysis_results(result: SeriesAnalysisResult):
         col1, col2 = st.columns(2)
         with col1:
             if result.study_info:
-                st.markdown(f"""
+                st.markdown(
+                    f"""
                 - **Studie:** {result.study_info.get("study_description", "N/A")}
                 - **Modalität:** {result.study_info.get("modality", "N/A")}
-                """)
+                """
+                )
         with col2:
             if result.series_info:
-                st.markdown(f"""
+                st.markdown(
+                    f"""
                 - **Serie:** {result.series_info.get("series_description", "N/A")}
                 - **Serien-Nr.:** {result.series_info.get("series_number", "N/A")}
-                """)
+                """
+                )
 
     # Per-DICOM results
     st.subheader("Einzelne DICOM-Analysen")
@@ -853,14 +861,16 @@ def _render_analysis_results(result: SeriesAnalysisResult):
             with col1:
                 st.markdown("**Qualitätsbewertung:**")
                 quality = dicom_result.quality
-                st.markdown(f"""
+                st.markdown(
+                    f"""
                 - Positionierung: {quality.positioning}/5
                 - Kontrast: {quality.contrast}/5
                 - Artefakte: {quality.artifacts}/5
                 - Rauschen: {quality.noise_level}/5
                 - Bewegungsunschärfe: {quality.motion_blur}/5
                 - **Gesamt:** {quality.overall:.1f}/5
-                """)
+                """
+                )
                 if quality.is_diagnostic():
                     st.success(":material/check_circle: Diagnostische Qualität")
                 else:
@@ -879,12 +889,14 @@ def _render_analysis_results(result: SeriesAnalysisResult):
                             Severity.SEVERE: "🔴",
                             Severity.CRITICAL: "🚨",
                         }.get(anomaly.severity, ":material/help:")
-                        st.markdown(f"""
+                        st.markdown(
+                            f"""
                         {severity_color} **{anomaly.anomaly_type}** ({anomaly.severity.to_label()})
                         - Ort: {anomaly.location}
                         - Konfidenz: {anomaly.confidence:.0%}
                         - {anomaly.description}
-                        """)
+                        """
+                        )
                 else:
                     st.info("Keine Anomalien gefunden")
 

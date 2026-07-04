@@ -31,24 +31,24 @@ class TestFallbackAgentIsolation:
         a1 = agents._get_fallback_agent()
         a2 = agents._get_fallback_agent()
 
-        assert a1 is not a2, (
-            "Each call should produce a distinct agent (no shared singleton)"
-        )
+        assert (
+            a1 is not a2
+        ), "Each call should produce a distinct agent (no shared singleton)"
         assert call_count == 2
 
     def test_no_module_level_agent_singleton(self) -> None:
         import services.agents as agents_module
 
-        assert not hasattr(agents_module, "_AGENT"), (
-            "_AGENT module-level singleton must not exist after P2-E refactor"
-        )
+        assert not hasattr(
+            agents_module, "_AGENT"
+        ), "_AGENT module-level singleton must not exist after P2-E refactor"
 
     def test_no_module_level_last_trace(self) -> None:
         import services.agents as agents_module
 
-        assert not hasattr(agents_module, "_LAST_TRACE"), (
-            "_LAST_TRACE module-level singleton must not exist after P2-E refactor"
-        )
+        assert not hasattr(
+            agents_module, "_LAST_TRACE"
+        ), "_LAST_TRACE module-level singleton must not exist after P2-E refactor"
 
     def test_build_chat_agent_with_no_config_uses_fallback(self, monkeypatch) -> None:
         from services import agents
@@ -58,9 +58,9 @@ class TestFallbackAgentIsolation:
 
         result = agents.build_chat_agent(agent_config=None)
 
-        assert result is fallback, (
-            "build_chat_agent(None) should delegate to _get_fallback_agent"
-        )
+        assert (
+            result is fallback
+        ), "build_chat_agent(None) should delegate to _get_fallback_agent"
 
     def test_get_fallback_agent_builds_fresh_every_call(self, monkeypatch) -> None:
         from services import agents
@@ -77,12 +77,12 @@ class TestFallbackAgentIsolation:
         agents._get_fallback_agent()
         agents._get_fallback_agent()
 
-        assert len(built) == 2, (
-            "_get_fallback_agent must call _build_agent fresh each time"
-        )
-        assert built[0] is not built[1], (
-            "each call must produce a distinct agent instance"
-        )
+        assert (
+            len(built) == 2
+        ), "_get_fallback_agent must call _build_agent fresh each time"
+        assert (
+            built[0] is not built[1]
+        ), "each call must produce a distinct agent instance"
 
 
 class TestSettingsDefaultModel:
@@ -94,9 +94,9 @@ class TestSettingsDefaultModel:
         s = get_settings()
         assert hasattr(s, "default_model")
         assert isinstance(s.default_model, str)
-        assert ":" in s.default_model, (
-            "default_model should be in 'provider:name' format"
-        )
+        assert (
+            ":" in s.default_model
+        ), "default_model should be in 'provider:name' format"
 
     def test_settings_has_default_chat_instructions(self) -> None:
         from services.settings import get_settings

@@ -18,10 +18,10 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0  # Full history for thorough secret scanning
-      
+
       - name: Install TruffleHog
         run: pip install trufflehog>=2.2.0
-      
+
       - name: TruffleHog Secret Scanning
         uses: trufflesecurity/trufflehog@main
         with:
@@ -35,22 +35,22 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      
+
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      
+
       - name: Install Bandit
         run: |
           python -m pip install --upgrade pip
           pip install bandit[toml]
-      
+
       - name: Run Bandit SAST
         run: |
           bandit -r . -f json -o bandit-report.json || true
           bandit -r . -f txt -o bandit-report.txt || true
-      
+
       - name: Upload Bandit reports
         uses: actions/upload-artifact@v4
         if: always()
@@ -67,27 +67,27 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      
+
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      
+
       - name: Install audit tools
         run: |
           python -m pip install --upgrade pip
           pip install pip-audit safety
-      
+
       - name: Run pip-audit
         run: |
           pip-audit -r requirements.txt --format=json --output=pip-audit-report.json || true
           pip-audit -r requirements.txt --format=csv --output=pip-audit-report.csv || true
-      
+
       - name: Run Safety check
         run: |
           safety check --output=json > safety-report.json || true
           safety check --output=text > safety-report.txt || true
-      
+
       - name: Upload dependency reports
         uses: actions/upload-artifact@v4
         if: always()
@@ -106,21 +106,21 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      
+
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      
+
       - name: Install pip-licenses
         run: |
           python -m pip install --upgrade pip
           pip install pip-licenses
-      
+
       - name: Generate license report
         run: |
           pip-licenses --format=markdown --output-file=license-report.txt
-      
+
       - name: Check for problematic licenses
         run: |
           # Flag GPL, AGPL, and other copyleft licenses
@@ -130,7 +130,7 @@ jobs:
             echo "WARNING: Copyleft licenses detected"
             echo "These may require additional compliance measures"
           fi
-      
+
       - name: Upload license reports
         uses: actions/upload-artifact@v4
         with:
@@ -146,34 +146,34 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      
+
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      
+
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install cyclonedx-bom
-      
+
       - name: Generate CycloneDX SBOM
         uses: anchore/sbom-action@v0.24.0
         with:
           format: cyclonedx-json
           output-file: sbom.cdx.json
           upload-artifact: true
-      
+
       - name: Generate additional SBOM metadata
         run: |
           python << 'EOF'
           import json
           import os
           from datetime import datetime
-          
+
           with open('sbom.cdx.json', 'r') as f:
               sbom = json.load(f)
-          
+
           # Add build metadata
           metadata = {
               'build': {
@@ -184,11 +184,11 @@ jobs:
                   'commit': '${{ github.sha }}'
               }
           }
-          
+
           if 'metadata' not in sbom:
               sbom['metadata'] = {}
           sbom['metadata'].update(metadata)
-          
+
           with open('sbom.cdx.json', 'w') as f:
               json.dump(sbom, f, indent=2)
           EOF

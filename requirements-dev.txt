@@ -6,6 +6,9 @@
 black>=23.0.0
 ruff>=0.15.14
 
+# Pre-commit hooks (runs CI checks locally before commit)
+pre-commit>=4.0.0
+
 # Security scanning
 bandit[toml]>=1.7.0
 pip-audit>=2.10.0

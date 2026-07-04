@@ -65,4 +65,3 @@ jobs:
           user_email: github-actions[bot]@users.noreply.github.com
           full_commit_message: "docs: deploy mkdocs site"
           allow_empty_commit: false
-
