@@ -43,7 +43,7 @@ moviepy>=2.2.1
 
 # External sources
 wikipedia>=1.4.0
-ddgs>=0.1.0
+ddgs>=9.14.4
 youtube_transcript_api>=1.2.4
 pubmed>=0.0.2.post0
 
